@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MY MINE</title>
+  <meta name="description" content="Portofolio projek tipis tipis main besar besar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ 
+  <header class="header" id="header">
+    <a href="#beranda" class="logo">AREL<span>.</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+    <nav class="nav" id="nav">
+      <a href="#tentang">Tentang</a>
+      <a href="#keahlian">Keahlian</a>
+      <a href="#karya">Karya</a>
+      <a href="#kontak" class="nav-cta">Hubungi saya</a>
+    </nav>
+  </header>
+ 
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="beranda">
+      <div class="hero-inner">
+        <p class="hero-intro">personal branding</p>
+        <h1 class="hero-title">riza azka<br>arel leo.</h1>
+        <p class="hero-desc">saya adalah seorang siswa SMKN 2 BANJARBARU dengan jurusan JKTT, yang memiliki minat dengan web development</p>
+        <div class="hero-actions">
+          <a href="#karya" class="btn btn-primary">Lihat</a>
+          <a href="#kontak" class="btn btn-ghost">Ajak mabar</a>
+        </div>
+      </div>
+      <div class="hero-block" aria-hidden="true">
+        <span id="typed"></span>
+      </div>
+    </section>
+ 
+    <!-- TENTANG -->
+    <section class="section light" id="tentang">
+      <div class="container two-col">
+        <h2 class="section-title">Tentang gumweh</h2>
+        <div class="about-text">
+          <p>Saya arel, bergoa di Banjarbaru, dan sudah 2 tahun saya menekuni dasar-dasar web devlopment ini. </p>
+          <p>kata gemini, branding yang baik itu sederhana: mudah diingat, jujur, dan terasa seperti pemiliknya. Tulis ceritamu sendiri di bagian ini.</p>
+          <ul class="stats">
+            <li><strong data-count="0">0</strong> proyek selesai,susah woe </li>
+            <li><strong data-count="34">0</strong> teman baik</li>
+            <li><strong data-count="3">0</strong> tahun sekolah di indonesia</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- KEAHLIAN -->
+    <section class="section dark" id="keahlian">
+      <div class="container">
+        <h2 class="section-title">Keahlian</h2>
+        <ul class="skills">
+          <li>
+            <h3>ADMINISTRASI JARINGAN</h3>
+            <p>Paham debian, dns, hosting, ehcp, database, mail server, dan proxmox.</p>
+          </li>
+          <li>
+            <h3>dev ops</h3>
+            <p>paham dasar dasar docker, kubernetes, gtihub CI/CD.</p>
+          </li>
+          <li>
+            <h3>Desain web</h3>
+            <p>Website ringan dan responsif untuk portofolio atau usaha.</p>
+          </li>
+          <li>
+            <h3>Fotografi produk</h3>
+            <p>ini hobi sampingan aja sih.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+ 
+    <!-- KARYA -->
+    <section class="section light" id="karya">
+      <div class="container">
+        <h2 class="section-title">sertif keknya</h2>
+        <div class="filters" role="group" aria-label="Filter karya">
+          <button class="filter active" data-filter="all">Semua</button>
+          <button class="filter" data-filter="brand">Brand</button>
+          <button class="filter" data-filter="web">Web</button>
+          <button class="filter" data-filter="konten">...</button>
+        </div>
+        <div class="works">
+          <article class="work" data-cat="brand">
+            <div class="work-img w1"></div>
+            <h3>dihdih</h3>
+            <p>wleowleowleo</p>
+          </article>
+          <article class="work" data-cat="web">
+            <div class="work-img w2"></div>
+            <h3>Toko abe</h3>
+            <p>maduraaaa</p>
+          </article>
+          <article class="work" data-cat="konten">
+            <div class="work-img w3"></div>
+            <h3>cooldih</h3>
+            <p>Txxxxx</p>
+          </article>
+          <article class="work" data-cat="brand">
+            <div class="work-img w4"></div>
+            <h3>Warung Buhari</h3>
+            <p>24jammm</p>
+          </article>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- KONTAK -->
+    <section class="section dark" id="kontak">
+      <div class="container two-col">
+        <div>
+          <h2 class="section-title">coolntact</h2>
+          <p class="contact-lead">Punya apa, mungkin saya balas maksimmal 7x24 jam.</p>
+          <ul class="socials">
+            <li><a href="mailto:rizaleo709@gmail.com">rizaleo709@gmail.com</a></li>
+            <li><a href="https://instagram.com/arellasleepp/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="https://glints.com/id/profile" target="_blank" rel="noopener">Glints</a></li>
+          </ul>
+        </div>
+        <form class="form" id="form" novalidate>
+          <label>Nama
+            <input type="text" name="nama" required>
+          </label>
+          <label>Email
+            <input type="email" name="email" required>
+          </label>
+          <label>Pesan
+            <textarea name="pesan" rows="4" required></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary">Kirim pesan</button>
+          <p class="form-note" id="formNote" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+ 
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> arel. Semua hak dilindungi.</p>
+    <a href="#beranda">Kembali ke atas</a>
+  </footer>
+ 
+  <script src="script.js"></script>
+</body>
+</html>
+ 
