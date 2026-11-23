@@ -82,9 +82,9 @@
   var typedEl = $("#typed");
   if (typedEl) {
     var words = [
-      "web developer.",
-      "skeleton",
-      "legal 17",
+      "NEWBIE WEB DEVELOPMENT",
+      "SMKN 2 BJB",
+      "17 TAHUN",
       "tugas tipis tipis main besar besar."
     ];
 
