@@ -256,7 +256,6 @@
     });
   }
 
-  
   var form = $("#form");
   var note = $("#formNote");
 
@@ -275,39 +274,51 @@
       });
     });
 
-    emailjs.init("GV8g6JgoYV7rO-fZv");
+    // Init EmailJS dengan pengaman: kalau SDK gagal dimuat,
+    // script lain tetap jalan dan handler submit tetap terpasang.
+    var emailjsReady = typeof emailjs !== "undefined";
+    if (emailjsReady) {
+      emailjs.init({ publicKey: "GV8g6JgoYV7rO-fZv" });
+    } else {
+      console.error("EmailJS SDK belum dimuat. Cek tag <script> EmailJS di HTML.");
+    }
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-  var nama = form.elements["nama"];
-  var email = form.elements["email"];
-  var pesan = form.elements["pesan"];
-  var firstInvalid = null;
+      var nama = form.elements["nama"];
+      var email = form.elements["email"];
+      var pesan = form.elements["pesan"];
+      var firstInvalid = null;
 
-  [nama, email, pesan].forEach(function (f) {
-    var val = f.value.trim();
-    var bad = !val || (f === email && !emailRe.test(val));
-    f.closest("label").classList.toggle("invalid", bad);
-    if (bad && !firstInvalid) firstInvalid = f;
-  });
+      [nama, email, pesan].forEach(function (f) {
+        var val = f.value.trim();
+        var bad = !val || (f === email && !emailRe.test(val));
+        f.closest("label").classList.toggle("invalid", bad);
+        if (bad && !firstInvalid) firstInvalid = f;
+      });
 
-  if (firstInvalid) {
-    setNote("Isi semua kolom dengan benar dulu ya.", "error");
-    firstInvalid.focus();
-    return;
-  }
+      if (firstInvalid) {
+        setNote("Isi semua kolom dengan benar dulu ya.", "error");
+        firstInvalid.focus();
+        return;
+      }
 
-  setNote("Mengirim pesan...", "");
+      if (!emailjsReady) {
+        setNote("Layanan email belum siap. Muat ulang halaman lalu coba lagi.", "error");
+        return;
+      }
 
-  var templateParams = {
-    name: nama.value.trim(),
-    email: email.value.trim(),
-    title: "Pesan dari " + nama.value.trim() + " (portofolio)",
-    message: pesan.value.trim()
-  };
+      setNote("Mengirim pesan...", "");
 
-        emailjs.send("service_ellp7xx", "template_0g7yhmy", templateParams)
+      var templateParams = {
+        name: nama.value.trim(),
+        email: email.value.trim(),
+        title: "Pesan dari " + nama.value.trim() + " (portofolio)",
+        message: pesan.value.trim()
+      };
+
+      emailjs.send("service_ellp7xx", "template_0g7yhmy", templateParams)
         .then(function () {
           setNote("Pesan berhasil terkirim! Terima kasih, " + nama.value.trim() + "!", "ok");
           form.reset();
@@ -318,3 +329,4 @@ form.addEventListener("submit", function (e) {
     });
   }
 })();
+  
