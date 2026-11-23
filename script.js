@@ -274,8 +274,7 @@
       });
     });
 
-    // Init EmailJS dengan pengaman: kalau SDK gagal dimuat,
-    // script lain tetap jalan dan handler submit tetap terpasang.
+   
     var emailjsReady = typeof emailjs !== "undefined";
     if (emailjsReady) {
       emailjs.init({ publicKey: "GV8g6JgoYV7rO-fZv" });
@@ -318,7 +317,7 @@
         message: pesan.value.trim()
       };
 
-      emailjs.send("service_ellp7xx", "template_0g7yhmy", templateParams)
+      emailjs.send("service_ellp7xx", "template_njgpqct", templateParams)
         .then(function () {
           setNote("Pesan berhasil terkirim! Terima kasih, " + nama.value.trim() + "!", "ok");
           form.reset();
