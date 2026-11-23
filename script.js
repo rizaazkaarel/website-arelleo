@@ -275,36 +275,46 @@
       });
     });
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
+    emailjs.init("GV8g6JgoYV7rO-fZv");
 
-      var nama = form.elements["nama"];
-      var email = form.elements["email"];
-      var pesan = form.elements["pesan"];
-      var firstInvalid = null;
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
 
-      [nama, email, pesan].forEach(function (f) {
-        var val = f.value.trim();
-        var bad = !val || (f === email && !emailRe.test(val));
-        f.closest("label").classList.toggle("invalid", bad);
-        if (bad && !firstInvalid) firstInvalid = f;
-      });
+  var nama = form.elements["nama"];
+  var email = form.elements["email"];
+  var pesan = form.elements["pesan"];
+  var firstInvalid = null;
 
-      if (firstInvalid) {
-        setNote("Isi semua kolom dengan benar dulu ya.", "error");
-        firstInvalid.focus();
-        return;
-      }
+  [nama, email, pesan].forEach(function (f) {
+    var val = f.value.trim();
+    var bad = !val || (f === email && !emailRe.test(val));
+    f.closest("label").classList.toggle("invalid", bad);
+    if (bad && !firstInvalid) firstInvalid = f;
+  });
 
-      
-      var subject = encodeURIComponent("Pesan dari " + nama.value.trim() + " (portofolio)");
-      var body = encodeURIComponent(
-        pesan.value.trim() + "\n\n— " + nama.value.trim() + " (" + email.value.trim() + ")"
-      );
-      window.location.href = "mailto:rizaleo709@gmail.com?subject=" + subject + "&body=" + body;
+  if (firstInvalid) {
+    setNote("Isi semua kolom dengan benar dulu ya.", "error");
+    firstInvalid.focus();
+    return;
+  }
 
-      setNote("Membuka aplikasi email kamu… terima kasih, " + nama.value.trim() + "!", "ok");
-      form.reset();
+  setNote("Mengirim pesan...", "");
+
+  var templateParams = {
+    name: nama.value.trim(),
+    email: email.value.trim(),
+    title: "Pesan dari " + nama.value.trim() + " (portofolio)",
+    message: pesan.value.trim()
+  };
+
+        emailjs.send("service_ellp7xx", "template_0g7yhmy", templateParams)
+        .then(function () {
+          setNote("Pesan berhasil terkirim! Terima kasih, " + nama.value.trim() + "!", "ok");
+          form.reset();
+        }, function (error) {
+          setNote("Gagal mengirim pesan. Coba lagi nanti ya.", "error");
+          console.error("EmailJS Error:", error);
+        });
     });
   }
 })();
