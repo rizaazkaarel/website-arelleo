@@ -943,3 +943,22 @@ section[id] {
     transform: none;
   }
 }
+
+/* --- Sertifikat asli --- */
+.work-img.cert-img {
+  aspect-ratio: 1.414 / 1;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.work-img.cert-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 14px;
+}
