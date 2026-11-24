@@ -329,3 +329,29 @@
   }
 })();
   
+document.addEventListener("DOMContentLoaded", function() {
+  var splashScreen = document.getElementById("splash-screen");
+  var mainContent = document.getElementById("main-content");
+  var btnYes = document.getElementById("btn-yes");
+
+  if (btnYes && splashScreen && mainContent) {
+    
+    btnYes.focus();
+
+    btnYes.addEventListener("click", function() {
+      
+      splashScreen.classList.add("fade-out");
+
+      
+      setTimeout(function() {
+        splashScreen.style.display = "none"; 
+        
+        
+        mainContent.classList.add("show");
+        
+       
+        window.dispatchEvent(new Event('scroll'));
+      }, 800); // 800ms = 0.8s
+    });
+  }
+});
