@@ -944,7 +944,7 @@ section[id] {
   }
 }
 
-/* --- Sertifikat asli --- */
+
 .work-img.cert-img {
   aspect-ratio: 1.414 / 1;
   background: #ffffff;
@@ -961,4 +961,52 @@ section[id] {
   object-fit: contain;
   display: block;
   border-radius: 14px;
+}
+
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  background-color: var(--black);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+.splash-content {
+  max-width: 600px;
+}
+
+.splash-content h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 40px;
+  color: var(--white);
+}
+
+.splash-btn {
+  font-size: 1.2rem;
+  padding: 16px 48px;
+}
+
+
+.splash-screen.fade-out {
+  opacity: 0;
+  transform: scale(1.1); 
+  pointer-events: none;
+}
+
+.hidden-content {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+.hidden-content.show {
+  opacity: 1;
+  visibility: visible;
 }
